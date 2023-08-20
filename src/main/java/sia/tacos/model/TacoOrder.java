@@ -2,24 +2,31 @@ package sia.tacos.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-public class TacoOrder {
+@Table("Taco_Cloud_Order")
+public class TacoOrder implements Serializable {
 
     private static final long serialVersionUIO = 1L;
 
+    @Id
     private long id;
 
     private Date placeAt;
 
+    @Column("customer_name")
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
 
