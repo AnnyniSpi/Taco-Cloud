@@ -1,5 +1,6 @@
 package sia.tacos.controllers;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,7 @@ import sia.tacos.model.Taco;
 import sia.tacos.model.TacoOrder;
 import sia.tacos.repositories.IngredientRepository;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

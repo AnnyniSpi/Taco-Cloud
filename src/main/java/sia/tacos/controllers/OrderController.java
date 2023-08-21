@@ -1,5 +1,6 @@
 package sia.tacos.controllers;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import sia.tacos.model.TacoOrder;
 import sia.tacos.repositories.OrderRepository;
 
-import javax.validation.Valid;
 
 @Slf4j
 @Controller
