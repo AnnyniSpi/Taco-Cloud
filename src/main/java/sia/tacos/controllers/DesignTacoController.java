@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import sia.tacos.model.Ingredient;
 import sia.tacos.model.Taco;
 import sia.tacos.model.TacoOrder;
+import sia.tacos.model.TacoUDT;
 import sia.tacos.repositories.IngredientRepository;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class DesignTacoController {
             return "design";
         }
 
-        tacoOrder.addTaco(taco);
+        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
         log.info("Processing taco: {}", taco);
 
         return "redirect:/orders/current";
