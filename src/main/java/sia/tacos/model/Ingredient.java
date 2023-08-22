@@ -3,14 +3,12 @@ package sia.tacos.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.data.relational.core.mapping.Table;
 
 
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Entity
-@Table
 public class Ingredient {
 
     @Id
