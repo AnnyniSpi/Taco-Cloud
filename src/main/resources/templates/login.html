@@ -29,7 +29,10 @@
     <input type="submit" value="Login"/>
 
     <a th:href="@{/oauth2/authorization/facebook}">Sign in with Facebook</a>
+  </form>
 
+  <form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
   </form>
 </body>
 </html>
