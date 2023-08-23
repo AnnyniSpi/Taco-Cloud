@@ -36,6 +36,9 @@ public class SecurityConfig {
                 .requestMatchers("/", "/**")
                 .permitAll()
                 .and()
+                .formLogin()
+                .loginPage("/login")
+                .and()
                 .build();
     }
 
