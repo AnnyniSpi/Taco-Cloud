@@ -35,13 +35,19 @@ public class SecurityConfig {
                 .requestMatchers("/design", "/orders").hasRole("USER")
                 .requestMatchers("/", "/**")
                 .permitAll()
+
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/design")
+//                .loginProcessingUrl("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/design")
+
+                .and()
+                .oauth2Login()
+                .loginPage("/login")
+
                 .and()
                 .build();
     }
