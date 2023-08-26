@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.relational.core.mapping.Column;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class TacoOrder implements Serializable {
 
     private Date placedAt = new Date();
 
-    @Column("customer_name")
+    @Column(name = "customer_name")
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
 
