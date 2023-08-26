@@ -10,7 +10,6 @@ import lombok.*;
 @RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Entity
-@Table
 public class Ingredient {
 
     @Id
