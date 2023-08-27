@@ -3,8 +3,11 @@ package sia.tacos.controllers.api;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sia.tacos.model.Taco;
+import sia.tacos.model.TacoOrder;
 import sia.tacos.repositories.TacoRepository;
 
 import java.util.Optional;
@@ -29,8 +32,17 @@ public class TacoRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Taco> tacoById(@PathVariable("id") Long id){
-        return tacoRepo.findById(id);
+    public ResponseEntity<Taco> tacoById(@PathVariable("id") Long id){
+        Optional<Taco> optTaco = tacoRepo.findById(id);
+        if (optTaco.isPresent()){
+            return new ResponseEntity<>(optTaco.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping(consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Taco postTaco(@RequestBody Taco taco){
+        return tacoRepo.save(taco);
+    }
 }
