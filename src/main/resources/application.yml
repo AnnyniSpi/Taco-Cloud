@@ -1,5 +1,11 @@
 spring:
+  data:
+    rest:
+      base-path: /data-api
   security:
+    user:
+      name: buzz
+      password: 123
     oauth2:
       client:
         registration:
@@ -14,3 +20,6 @@ spring:
     generate-unique-name: false
     name: tacocloud
 
+taco:
+  orders:
+    pageSize: 10
