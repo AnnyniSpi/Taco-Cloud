@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"sia.jms_artemis", "sia.rabbitMq"})
+@ComponentScan(basePackages = {"sia.jms_artemis", "sia.rabbitMq", "sia.kafka"})
 public class TacoCloudApplication {
 
     public static void main(String[] args) {

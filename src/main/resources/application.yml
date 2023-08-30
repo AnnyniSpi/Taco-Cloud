@@ -19,11 +19,18 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-  rabbitmq:
+  kafka:
     template:
-      exchange: tacocloud.order
-      routing-key: kitchens.central
-      receive-timeout: 30000
+      default-topic: tacocloud.orders.topic
+    bootstrap-servers:
+      - localhost:9092
+      - localhost:9093
+      - localhost:9094
+#  rabbitmq:
+#    template:
+#      exchange: tacocloud.order
+#      routing-key: kitchens.central
+#      receive-timeout: 30000
 #  jms:
 #    template:
 #      default-destination: tacocloud.order.queue
