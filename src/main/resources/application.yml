@@ -19,7 +19,9 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
 taco:
   orders:
     pageSize: 10

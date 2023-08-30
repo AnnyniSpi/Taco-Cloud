@@ -1,9 +1,9 @@
 package sia.tacos.controllers.api;
 
-import org.springframework.beans.factory.parsing.EmptyReaderEventListener;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import sia.jms_artemis.JmsOrderMessagingService;
 import sia.tacos.model.TacoOrder;
 import sia.tacos.repositories.OrderRepository;
 
@@ -14,9 +14,23 @@ import sia.tacos.repositories.OrderRepository;
 public class OrderRestController {
 
     private final OrderRepository orderRepo;
+    private final JmsOrderMessagingService messagingService;
 
-    public OrderRestController(OrderRepository orderRepo) {
+    public OrderRestController(OrderRepository orderRepo, JmsOrderMessagingService messagingService) {
         this.orderRepo = orderRepo;
+        this.messagingService = messagingService;
+    }
+
+    @GetMapping(produces = "application/json")
+    public Iterable<TacoOrder> allOrders(){
+        return orderRepo.findAll();
+    }
+
+    @PostMapping(consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public TacoOrder postOrder(@RequestBody TacoOrder order){
+        messagingService.sendOrder(order);
+        return orderRepo.save(order);
     }
 
     @PutMapping(path = "/{orderId}", consumes = "application/json")
