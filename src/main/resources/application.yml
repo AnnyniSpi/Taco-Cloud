@@ -19,9 +19,15 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-  jms:
+  rabbitmq:
     template:
-      default-destination: tacocloud.order.queue
+      exchange: tacocloud.order
+      routing-key: kitchens.central
+      receive-timeout: 30000
+#  jms:
+#    template:
+#      default-destination: tacocloud.order.queue
+
 taco:
   orders:
     pageSize: 10
